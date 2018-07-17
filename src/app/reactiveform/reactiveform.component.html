@@ -1,0 +1,57 @@
+<div class="jumbotron">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <h3>Registration Form</h3>
+              <form name="form" (ngSubmit)="submit()" [formGroup]='Rform' >
+                  <div class="form-group">
+                      <label for="firstName">First Name</label>
+                       <input [style.border-left]="Rform.controls.fnameControl?.hasError('required')?'3px solid red':'3px solid green'"type="text" formControlName='fnameControl' class="form-control" name="firstName" />
+                       <p>{{Rform.get('fnameControl').value}}</p>
+                       <div class='alert alert-danger' [hidden]='Rform.controls.fnameControl.pristine || Rform.controls.fnameControl.valid '>
+                       <p>Invalid First name. Enter less then 12 characters</p>
+                     </div> 
+                  </div>
+                  <div class="form-group">
+                      <label for="lastName">Last Name</label>
+                      <input [style.border-left]="Rform.controls.lnameControl?.hasError('required')?'3px solid red':'3px solid green'" type="text" formControlName='lnameControl' class="form-control" name="lastName" />
+                      <p>{{Rform.get('lnameControl').value}}</p>
+                      <div class='alert alert-danger' [hidden]='Rform.controls.lnameControl.pristine || Rform.controls.lnameControl.valid '>
+                      <p>Invalid last name. less then 12 characters</p>
+                    </div>  
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="text" formControlName='emailControl' class="form-control" name="email" />
+                  </div>
+                  <div formGroupName="address">
+                      <div class="form-group">
+                          <label for="lastName">City</label>
+                          <input type="text" formControlName='city' class="form-control" name="lastName" />
+                      </div>
+                      <div class="form-group">
+                          <label for="lastName">State</label>
+                          <input type="text" formControlName='state' class="form-control" name="lastName" />
+                      </div>
+                      <div class="form-group">
+                          <label for="lastName">Pincode</label>
+                          <input type="text" formControlName='pincode' class="form-control" name="lastName" />
+                      </div>
+
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" formControlName='passwordControl' class="form-control" name="password" />
+                  </div>
+                  <div class="form-group">
+                    <label for="Cpassword">Confirm Password</label>
+                    <input type="password" formControlName='cpasswordControl' class="form-control" name="cpassword" />
+                </div>
+                  <div class="form-group">
+                      <button [disabled]="!Rform.valid"  class="btn btn-primary">Register</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
